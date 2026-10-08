@@ -9,6 +9,8 @@
   <ItemGroup>
     <!-- Necesario para poder inyectar IHttpClientFactory en esta capa -->
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.12" />
+    <!-- Resiliencia para HttpClient (Retry, Circuit Breaker, Timeout...) construida sobre Polly v8 -->
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.10.0" />
   </ItemGroup>
 
   <ItemGroup>

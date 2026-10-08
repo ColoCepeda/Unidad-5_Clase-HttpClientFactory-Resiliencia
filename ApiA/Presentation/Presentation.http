@@ -20,3 +20,6 @@ GET {{ApiA}}/api/jokes/random/3
 
 ### Chistes por tipo
 GET {{ApiA}}/api/jokes/type/programming
+
+### Llamar a la API B (con Retry + Circuit Breaker)
+GET {{ApiA}}/api/call/api-b
