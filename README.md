@@ -23,6 +23,17 @@ dotnet --version   # debe empezar con 10.
 
 ---
 
+## Clonar
+
+Tip: dale un nombre corto a la carpeta con el último argumento del `git clone`.
+
+```bash
+git clone https://github.com/ColoCepeda/Unidad-5_Clase-HttpClientFactory-Resiliencia.git Clase
+cd Clase
+```
+
+---
+
 ## Ramas
 
 | Rama | Qué contiene |
@@ -42,33 +53,45 @@ git checkout paso-1-httpclientfactory  # o paso-2-resiliencia
 
 ## Estructura
 
+Hay **dos aplicaciones independientes**, cada una con su propia solución:
+
 ```
-Unidad5.slnx
-├── ApiA/                      → nuestra API principal (puerto 5100)
+Clase/
+├── ApiA/                      → NUESTRA API (puerto 5100) — ApiA.slnx
 │   ├── Application/           → modelos (DTOs) e interfaces
 │   ├── Infrastructure/        → servicios que llaman a APIs externas
 │   └── Presentation/          → controllers + Program.cs
-└── ApiB/                      → API "inestable" para probar resiliencia (puerto 5200)
+└── ServicioExterno/           → una API DE TERCEROS (puerto 5200) — ApiB.slnx
+    └── ApiB/                  → falla a propósito, para probar resiliencia
 ```
+
+`ServicioExterno` representa un sistema que **no es nuestro**: la API A lo consume igual que consume la API de chistes. Por eso no tiene nuestras capas ni comparte solución con la API A.
 
 ---
 
-## Cómo correr las APIs
+## Cómo compilar y correr
 
-Desde la raíz del repositorio, en **dos terminales distintas**:
+Desde la raíz del repositorio:
 
 ```bash
-# Terminal 1 – API B
-dotnet run --project ApiB
+dotnet build ApiA/ApiA.slnx
+dotnet build ServicioExterno/ApiB.slnx
+```
 
-# Terminal 2 – API A
+Para correrlas, en **dos terminales distintas**:
+
+```bash
+# Terminal 1 – API B (servicio externo)
+dotnet run --project ServicioExterno/ApiB
+
+# Terminal 2 – API A (nuestra API)
 dotnet run --project ApiA/Presentation
 ```
 
 - Swagger de la API A: http://localhost:5100/swagger
 - Swagger de la API B: http://localhost:5200/swagger
 
-> En Visual Studio podés elegir **"Configurar proyectos de inicio" → Varios proyectos de inicio** y marcar `Presentation` y `ApiB`.
+> En Visual Studio, abrí `ApiA/ApiA.slnx` y `ServicioExterno/ApiB.slnx` en **dos ventanas** y ejecutá cada una con F5.
 
 ---
 
