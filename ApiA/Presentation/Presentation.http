@@ -1,0 +1,5 @@
+@ApiA = http://localhost:5100
+
+### Chiste aleatorio
+GET {{ApiA}}/api/jokes/random
+Accept: application/json

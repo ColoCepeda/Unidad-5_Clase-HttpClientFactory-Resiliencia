@@ -1,0 +1,10 @@
+@ApiB = http://localhost:5200
+
+### Endpoint inestable (falla las primeras N veces)
+GET {{ApiB}}/api/test/unstable
+
+### Resetear el contador
+GET {{ApiB}}/api/test/reset
+
+### Cambiar cuántas requests fallan (ej: 2)
+POST {{ApiB}}/api/test/umbral/2

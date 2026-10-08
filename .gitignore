@@ -1,0 +1,15 @@
+## .NET / Visual Studio
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.rsuser
+*.swp
+TestResults/
+*.log

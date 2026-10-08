@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/ApiA/">
+    <Project Path="ApiA/Application/Application.csproj" />
+    <Project Path="ApiA/Infrastructure/Infrastructure.csproj" />
+    <Project Path="ApiA/Presentation/Presentation.csproj" />
+  </Folder>
+  <Folder Name="/ApiB/">
+    <Project Path="ApiB/ApiB.csproj" />
+  </Folder>
+</Solution>
