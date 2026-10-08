@@ -1,9 +1,16 @@
 namespace Application.Models
 {
+    /// <summary>
+    /// Formato de un chiste tal como lo devuelve la Official Joke API:
+    /// { "type": "general", "setup": "...", "punchline": "...", "id": 1 }
+    /// No hace falta [JsonPropertyName]: ReadFromJsonAsync/GetFromJsonAsync
+    /// usan las opciones "web", que ignoran mayúsculas/minúsculas.
+    /// </summary>
     public class JokeDTO
     {
-        // Agregá las propiedades necesarias para poder mapear los chistes que devuelve la API.
-        // Tip: probá el endpoint https://official-joke-api.appspot.com/random_joke en el navegador
-        // y mirá qué campos trae el JSON.
+        public int Id { get; set; }
+        public string Type { get; set; } = string.Empty;
+        public string Setup { get; set; } = string.Empty;
+        public string Punchline { get; set; } = string.Empty;
     }
 }

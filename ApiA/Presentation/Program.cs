@@ -8,12 +8,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// TODO: registrá con AddHttpClient un cliente con nombre "jokes" para la API de chistes.
-// La URL base está en appsettings.json -> ExternalApis:Jokes
+// 1) Registramos un cliente con nombre ("named client") para la API de chistes.
+//    Todo lo que configuremos acá aplica a cada HttpClient que se cree con CreateClient("jokes").
+builder.Services.AddHttpClient("jokes", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ExternalApis:Jokes"]!);
+    client.Timeout = TimeSpan.FromSeconds(10);
+});
 
-
-// TODO: registrá el servicio de chistes (interfaz + implementación).
-
+// 2) Registramos el servicio: cuando alguien pida IJokeService, le damos un JokeService.
+builder.Services.AddScoped<IJokeService, JokeService>();
 
 var app = builder.Build();
 

@@ -2,4 +2,21 @@
 
 ### Chiste aleatorio
 GET {{ApiA}}/api/jokes/random
-Accept: application/json
+
+### Chiste por id
+GET {{ApiA}}/api/jokes/1
+
+### Chiste inexistente (404)
+GET {{ApiA}}/api/jokes/999999
+
+### Tipos de chistes
+GET {{ApiA}}/api/jokes/types
+
+### Diez chistes aleatorios
+GET {{ApiA}}/api/jokes/ten
+
+### N chistes aleatorios
+GET {{ApiA}}/api/jokes/random/3
+
+### Chistes por tipo
+GET {{ApiA}}/api/jokes/type/programming
